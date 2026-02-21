@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  gap: 30px;
+  /* Spiderman logo image as background with dark overlay for readability */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://wallpapersok.com/images/high/the-spiderman-logo-bsxf3kexoa33wi45.webp") center center / cover no-repeat fixed;
+  background-color: #0a0a0a;
+  position: relative;
+}
+
+/* Spiderman Logo */
+.spiderman-logo {
+  width: 200px;
+  height: 200px;
+  background-color: #000000;
+  border-radius: 50%;
+  position: relative;
+  display: block;
+  border: 3px solid #ffffff;
+  overflow: visible;
+  z-index: 1;
+  /* Web pattern background - layers on top of black */
+  background-image: 
+    /* Diagonal web lines */
+    linear-gradient(45deg, transparent 47%, rgba(255, 255, 255, 0.4) 48%, rgba(255, 255, 255, 0.4) 52%, transparent 53%),
+    linear-gradient(-45deg, transparent 47%, rgba(255, 255, 255, 0.4) 48%, rgba(255, 255, 255, 0.4) 52%, transparent 53%),
+    linear-gradient(135deg, transparent 47%, rgba(255, 255, 255, 0.4) 48%, rgba(255, 255, 255, 0.4) 52%, transparent 53%),
+    linear-gradient(-135deg, transparent 47%, rgba(255, 255, 255, 0.4) 48%, rgba(255, 255, 255, 0.4) 52%, transparent 53%),
+    /* Horizontal and vertical web lines */
+    linear-gradient(0deg, transparent 47%, rgba(255, 255, 255, 0.4) 48%, rgba(255, 255, 255, 0.4) 52%, transparent 53%),
+    linear-gradient(90deg, transparent 47%, rgba(255, 255, 255, 0.4) 48%, rgba(255, 255, 255, 0.4) 52%, transparent 53%),
+    /* Concentric circles for web effect */
+    radial-gradient(circle at center, transparent 35%, rgba(255, 255, 255, 0.2) 36%, rgba(255, 255, 255, 0.2) 37%, transparent 38%),
+    radial-gradient(circle at center, transparent 45%, rgba(255, 255, 255, 0.15) 46%, rgba(255, 255, 255, 0.15) 47%, transparent 48%);
+  background-size: 200px 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 
+    0 0 30px rgba(0, 0, 0, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.1),
+    /* Spider legs - Top left */
+    -35px -25px 0 -3px #ffffff,
+    -45px -15px 0 -3px #ffffff,
+    /* Top right */
+    35px -25px 0 -3px #ffffff,
+    45px -15px 0 -3px #ffffff,
+    /* Middle left */
+    -40px 5px 0 -3px #ffffff,
+    -50px 15px 0 -3px #ffffff,
+    /* Middle right */
+    40px 5px 0 -3px #ffffff,
+    50px 15px 0 -3px #ffffff,
+    /* Bottom left */
+    -35px 35px 0 -3px #ffffff,
+    -45px 45px 0 -3px #ffffff,
+    /* Bottom right */
+    35px 35px 0 -3px #ffffff,
+    45px 45px 0 -3px #ffffff;
+}
+
+/* Spider head */
+.spiderman-logo::before {
+  content: '';
+  width: 55px;
+  height: 55px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 28%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* Spider body */
+.spiderman-logo::after {
+  content: '';
+  width: 65px;
+  height: 85px;
+  background: #ffffff;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.clock-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 40px 60px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.clock {
+  font-size: 72px;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 5px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.time-unit {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 15px 25px;
+  border-radius: 15px;
+  min-width: 100px;
+  transition: all 0.3s ease;
+}
+
+.time-unit:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.separator {
+  font-size: 72px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0.3;
+  }
+}
+
+.date-display {
+  margin-top: 20px;
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .clock {
+    font-size: 48px;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .time-unit {
+    min-width: 80px;
+    padding: 10px 20px;
+  }
+  
+  .separator {
+    font-size: 48px;
+    display: none;
+  }
+  
+  .clock-container {
+    padding: 30px 40px;
+  }
+  
+  .date-display {
+    font-size: 18px;
+  }
+}
